@@ -24,7 +24,7 @@
 	
 	scratch:	canvas id where we're drawing the texture parts to. (Each block needs its own!)
 */
-function draw_model(canvas_id,scratch_id,username,scale,hat) {
+function draw_model_right(canvas_id,scratch_id,username,scale) {
 	//Draws an isometric model of the given minecraft username
 	var model = document.getElementById(canvas_id).getContext('2d');
 	var scratch = document.getElementById(scratch_id).getContext('2d');
@@ -38,7 +38,6 @@ function draw_model(canvas_id,scratch_id,username,scale,hat) {
 	document.getElementById(canvas_id).height = 44.8*scale;
 	
 	var skin = new Image();
-	// skin.src = 'http://s3.amazonaws.com/MinecraftSkins/' + username + '.png' // - Causes DOM Security Errors. So I made a php script that grabs it instead.
 	skin.src = '/_skin/' + username;
 	
 	skin.onload = function(){
@@ -98,25 +97,23 @@ function draw_model(canvas_id,scratch_id,username,scale,hat) {
 		model.scale(-1,1);
 		model.drawImage(document.getElementById(scratch_id), 8*scale, 0, 8*scale, 8*scale, -3*scale, 5*scale, 8*scale, 8*scale);
 		
-		if(hat == true) {
-			if(!is_one_color(scratch.getImageData(40*scale,8*scale,8*scale,8*scale))) {
-				//Hat
-				//Hat - Front
-				model.setTransform(1,-0.5,0,1.2,0,0);
-				model.drawImage(document.getElementById(scratch_id), 40*scale, 8*scale, 8*scale, 8*scale, 10*scale, 13/1.2*scale, 8*scale, 8*scale);
-				//Hat - Right
-				model.setTransform(1,0.5,0,1.2,0,0);
-				model.drawImage(document.getElementById(scratch_id), 32*scale, 8*scale, 8*scale, 8*scale, 2*scale, 3/1.2*scale, 8*scale, 8*scale);
-				//Hat - Top
-				model.setTransform(-1,0.5,1,0.5,0,0);
-				model.scale(-1,1);
-				model.drawImage(document.getElementById(scratch_id), 40*scale, 0, 8*scale, 8*scale, -3*scale, 5*scale, 8*scale, 8*scale);
-			}
+		if(!is_one_color(scratch.getImageData(40*scale,8*scale,8*scale,8*scale))) {
+			//Hat
+			//Hat - Front
+			model.setTransform(1,-0.5,0,1.2,0,0);
+			model.drawImage(document.getElementById(scratch_id), 40*scale, 8*scale, 8*scale, 8*scale, 10*scale, 13/1.2*scale, 8*scale, 8*scale);
+			//Hat - Right
+			model.setTransform(1,0.5,0,1.2,0,0);
+			model.drawImage(document.getElementById(scratch_id), 32*scale, 8*scale, 8*scale, 8*scale, 2*scale, 3/1.2*scale, 8*scale, 8*scale);
+			//Hat - Top
+			model.setTransform(-1,0.5,1,0.5,0,0);
+			model.scale(-1,1);
+			model.drawImage(document.getElementById(scratch_id), 40*scale, 0, 8*scale, 8*scale, -3*scale, 5*scale, 8*scale, 8*scale);
 		}
 	}
 }
 
-function draw_model_left(canvas_id,scratch_id,username,scale,hat) {
+function draw_model_left(canvas_id,scratch_id,username,scale) {
 	//Draws an isometric model of the given minecraft username
 	var model = document.getElementById(canvas_id).getContext('2d');
 	var scratch = document.getElementById(scratch_id).getContext('2d');
@@ -130,7 +127,6 @@ function draw_model_left(canvas_id,scratch_id,username,scale,hat) {
 	document.getElementById(canvas_id).height = 44.8*scale;
 	
 	var skin = new Image();
-	//skin.src = 'http://s3.amazonaws.com/MinecraftSkins/' + username + '.png' - Causes DOM Security Errors. So I made a php script that grabs it instead.
 	skin.src = '/_skin/' + username;
 	
 	skin.onload = function(){
@@ -191,19 +187,17 @@ function draw_model_left(canvas_id,scratch_id,username,scale,hat) {
 		model.setTransform(1,0.5,-1,0.5,0,0);
 		model.drawImage(document.getElementById(scratch_id), 8*scale, 0, 8*scale, 8*scale, 5*scale, -5*scale, 8*scale, 8*scale);
 		
-		if(hat == true) {
-			if(!is_one_color(scratch.getImageData(40*scale,8*scale,8*scale,8*scale))) {
-				//Hat
-				//Hat - Left
-				model.setTransform(1,-0.5,0,1.2,0,0);
-				model.drawImage(document.getElementById(scratch_id), 48*scale, 8*scale, 8*scale, 8*scale, 10*scale, 13/1.2*scale, 8*scale, 8*scale);
-				//Hat - Front
-				model.setTransform(1,0.5,0,1.2,0,0);
-				model.drawImage(document.getElementById(scratch_id), 40*scale, 8*scale, 8*scale, 8*scale, 2*scale, 3/1.2*scale, 8*scale, 8*scale);
-				//Hat - Top
-				model.setTransform(1,0.5,-1,0.5,0,0);
-				model.drawImage(document.getElementById(scratch_id), 40*scale, 0, 8*scale, 8*scale, 5*scale, -5*scale, 8*scale, 8*scale);
-			}
+		if(!is_one_color(scratch.getImageData(40*scale,8*scale,8*scale,8*scale))) {
+			//Hat
+			//Hat - Left
+			model.setTransform(1,-0.5,0,1.2,0,0);
+			model.drawImage(document.getElementById(scratch_id), 48*scale, 8*scale, 8*scale, 8*scale, 10*scale, 13/1.2*scale, 8*scale, 8*scale);
+			//Hat - Front
+			model.setTransform(1,0.5,0,1.2,0,0);
+			model.drawImage(document.getElementById(scratch_id), 40*scale, 8*scale, 8*scale, 8*scale, 2*scale, 3/1.2*scale, 8*scale, 8*scale);
+			//Hat - Top
+			model.setTransform(1,0.5,-1,0.5,0,0);
+			model.drawImage(document.getElementById(scratch_id), 40*scale, 0, 8*scale, 8*scale, 5*scale, -5*scale, 8*scale, 8*scale);
 		}
 	}
 }
