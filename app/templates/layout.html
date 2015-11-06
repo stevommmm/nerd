@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs - - - - - - - - - - -->
+  <meta charset="utf-8">
+  <title>nerd.nu :: Online Gaming Community</title>
+  <meta name="description" content="">
+  <meta name="author" content="c45y">
+
+  <!-- Mobile Specific Metas - - - - - - - - - - -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT - - - - - - - - - - -->
+  <link href='https://fonts.googleapis.com/css?family=Quantico:400' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+
+  <!-- CSS - - - - - - - - - - -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/site.js') }}"></script>
+
+  {% block header %}
+
+  {% endblock %}
+
+  <!-- Favicon - - - - - - - - - - -->
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="one-third column">
+        <a href="/">
+          <div class="header-logo">nerd.nu</div>
+        </a>
+      </div>
+      {% if players_online is defined %}
+      <div class="one-third column">
+        <p id="totalPlayers">{{players_online}} players online</p>
+      </div>
+      <div class="one-third column">
+      {% else %}
+      <div class="two-thirds column">
+      {% endif %}
+        <ul class="u-pull-right nav">
+          <li>
+            <a href="#" id="nav-pop-parent">Live Maps</a>
+            <ul class="popover" id="nav-pop-child">
+              <li><a href="http://nerd.nu/maps/pve/live">PvE Live Map</a></li>
+              <li><a href="http://nerd.nu/maps/pve/">PvE Overview</a></li>
+              <li><a href="http://nerd.nu/maps/creative/live">Creative Live Map</a></li>
+              <li><a href="http://nerd.nu/maps/creative/">Creative Overview</a></li>
+              <li><a class="close" id="nav-pop-close" href="#">&#10006;</a></li>
+            </ul>
+          </li>
+          <li><a href="https://wiki.nerd.nu/">Wiki</a></li>
+          <li><a href="https://nerd.nu/forums">Forum</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!-- Primary Page Layout - - - - - - - - - - -->
+  {% block body %}
+  
+  {% endblock %}
+  <!-- End Document - - - - - - - - - - -->
+  <script type="text/javascript">
+    new PopOver('nav-pop').register();
+  </script>
+</body>
+</html>

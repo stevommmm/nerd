@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block header %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/skin.js') }}"></script>
+<style type="text/css">
+.profile_left {
+  text-align: right;
+}
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+  {{ super() }}
+  <div class="breakbg"> </div>
+  <div class="container">
+    <div class="row">
+      <div class="one-half column profile_left">
+        <h3>{{player}}</h3>
+        <canvas id="skin">
+        <canvas id="skratch" style="display: none;">  
+      </div>
+      <div class="one-half column profile_right">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempor, neque in maximus hendrerit, neque leo blandit orci, eget ornare arcu ipsum at urna. Mauris blandit auctor ipsum sed luctus. Integer fringilla dui id turpis dignissim, at fermentum sem placerat. Quisque nisl turpis, tempor pharetra ex quis, ultricies tincidunt tortor. Proin ornare facilisis arcu, quis dapibus felis aliquet nec. Quisque eu nulla venenatis, tincidunt nisi ac, condimentum ligula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas maximus quam tristique leo varius luctus. Fusce odio massa, eleifend sit amet malesuada vel, tempor a magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla id lacinia quam. Mauris tincidunt consequat metus eget egestas.</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    draw_model('skin', 'skratch' , '{{player}}', 6 , true);
+  </script>
+{% endblock %}

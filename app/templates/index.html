@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+  {{ super() }}
+  <div id="herobg"> </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="one-third column serverbox">
+        <div class="serveraddr pve"></div>
+        <h3 id='clk-cpy-pve'>PvE</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="one-third column serverbox">
+        <div class="serveraddr creative"></div>
+        <h3 id='clk-cpy-creative'>Creative</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div class="one-third column serverbox">
+        <div class="serveraddr pvp"></div>
+        <h3 id='clk-cpy-pvp'>Survival</h3>
+        <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </div>
+    </div>
+    <div class="row">
+      <hr>
+    </div>
+    <div class="row">
+      <div class="one-half column">
+        <h4>About</h4>
+        <p>The Nerd.nu Minecraft Servers form a longstanding community of Minecraft players, one of the oldest in existence, running since 2009. We have deep roots in Reddit's userbase - we were originally found at <a href="https://www.reddit.com/r/minecraft">/r/Minecraft</a> before it became a general Minecraft subreddit, and are currently located at <a href="https://www.reddit.com/r/mcpublic">/r/mcpublic</a>. Our servers are primarily semi-vanilla, our staff entirely volunteer and drawn from the playerbase (even our tech admins who have developed in-house plugins), and we have <u>NO</u> pay-to-win / pay-for-perks, ranks or walls of chat spam asking you to pay for some feature - the servers are 100% voluntarily supported by members of the community.</p>
+      </div>
+      <div class="one-half column">
+        <h4>Contact</h4>
+        <ul class="contacts">
+          <li><a href="http://twitter.com/redditpublic">Follow us on twitter</a></li>
+          <li><a href="mailto:admins@nerd.nu">Email our admins about your issue</a></li>
+          <li><a href="mailto:outage@nerd.nu">Email our techs when something breaks</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+ <div id="footerbg"> </div>
+
+   <script type="text/javascript">
+    new ClickCopy('clk-cpy-creative', 'c.nerd.nu').register();
+    new ClickCopy('clk-cpy-pvp', 's.nerd.nu').register();
+    new ClickCopy('clk-cpy-pve', 'p.nerd.nu').register();
+  </script>
+{% endblock %}
