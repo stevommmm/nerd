@@ -35,7 +35,7 @@ def route_index():
 
 @app.route('/u/', methods=['GET'])
 def route_users():
-	db_players = Player.query.order_by(Player.last_login.desc()).all()
+	db_players = Player.query.order_by(Player.last_login.desc()).limit(1000).all()
 	print(db_players)
 	return render_template('users.html', players=db_players)
 
