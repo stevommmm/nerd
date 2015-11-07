@@ -57,7 +57,7 @@ def route_user_skin(player):
 		"""We should request a new skin if its older than 30 days"""
 		return time.time() - os.path.getmtime(floc) > (30 * 24 * 60 * 60)
 
-	if not os.path.exists(floc):
+	if not os.path.exists(floc) or is_stale_skin():
 		try:
 			skin_data = fetch_skin()
 			with open(floc, 'wb+') as ouf:
