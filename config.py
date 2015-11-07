@@ -5,6 +5,11 @@ DEBUG = True
 import os
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))  
 
+# Skin cache
+SKIN_CACHE = os.path.join(BASE_DIR, 'skincache')
+if not os.path.exists(SKIN_CACHE):
+	os.mkdir(SKIN_CACHE)
+
 # Define the database - we are working with
 # SQLite for this example
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')

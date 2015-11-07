@@ -1,12 +1,12 @@
 from app import db
 
-class User(db.Model):
+class Player(db.Model):
 
     __tablename__ = 'mc_user'
 
     name        = db.Column(db.String(128), nullable=False)
-    uuid        = db.Column(db.String(128), nullable=False, unique=True)
-    description = db.Column(db.Text(), nullable=true)
+    uuid        = db.Column(db.String(128), nullable=False, unique=True, primary_key=True)
+    description = db.Column(db.Text(), nullable=True)
     last_login  = db.Column(db.DateTime, default=db.func.current_timestamp())
 
     # New instance instantiation procedure
@@ -17,4 +17,4 @@ class User(db.Model):
         self.description = description
 
     def __repr__(self):
-        return '<User %r (%r)>' % (self.name, self.uuid)  
+        return '<Player %r (%r)>' % (self.name, self.uuid)  

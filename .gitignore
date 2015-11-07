@@ -1,4 +1,5 @@
 env/
+skincache/
 *.pyc
 *.db
 __pycache__
