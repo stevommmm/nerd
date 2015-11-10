@@ -7,6 +7,9 @@ from flask.ext.sqlalchemy import SQLAlchemy
 # Import urllib and os for our skin proxy
 import urllib, os, time
 
+# Sort our users into perm groups
+import collections
+
 # Define the WSGI application object
 app = Flask(__name__)
 
@@ -30,13 +33,12 @@ def not_found(error):
 
 @app.route('/', methods=['GET'])
 def route_index():
-	import random
-	return render_template('index.html', players_online=random.randint(0, 100))
+	return render_template('index.html')
 
 @app.route('/u/', methods=['GET'])
 def route_users():
-	db_players = Player.query.order_by(Player.last_login.desc()).limit(1000).all()
-	print(db_players)
+	players = collections.defaultdict(list)
+	db_players = Player.query.order_by(Player.last_login.desc()).all()
 	return render_template('users.html', players=db_players)
 
 @app.route('/u/<string:player>', methods=['GET'])
@@ -65,7 +67,7 @@ def route_user_skin(player):
 		except urllib.error.HTTPError:
 			return redirect('/_skin/default')
 
-	return send_file(floc, mimetype='image/png')
+	return send_file(floc, mimetype='image/png', cache_timeout=2629000)
 
 
 # Build the database:
